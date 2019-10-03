@@ -3,9 +3,18 @@
            https://api.github.com/users/<your name>
 */
 
+axios.get('https://api.github.com/users/zackychan97')
+  .then(response => {
+    console.log(response);
+  })
+
+
+
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
    data in order to use it to build your component function 
+
+
 
    Skip to Step 3.
 */
@@ -31,6 +40,7 @@ const followersArray = [];
 
 <div class="card">
   <img src={image url of user} />
+
   <div class="card-info">
     <h3 class="name">{users name}</h3>
     <p class="username">{users user name}</p>
@@ -42,9 +52,56 @@ const followersArray = [];
     <p>Following: {users following count}</p>
     <p>Bio: {users bio}</p>
   </div>
-</div>
 
+</div>
 */
+function githubCard(imgUrl, realName, hubName, location, githubURL, followers, following, bio){
+
+  //creating my elements
+  const newCard = document.createElement('div'),
+  newImage = document.createElement('img'),
+  userInfo = document.createElement('div'),
+  userRealName = document.createElement('h3'),
+  userHubName = document.createElement('p'),
+  userLocation = document.createElement('p'),
+  userProfile = document.createElement('p'),
+  userAddress = document.createElement('a'),
+  userFollowers = document.createElement('p'),
+  userFollowing = document.createElement('p'),
+  userBio = document.createElement('p');
+
+  //adding text content
+  newImage.src = imgUrl;
+  userRealName.textContent = realName;
+  userHubName.textContent = hubName;
+  userLocation.textContent = location;
+  userProfile.textContent = 'Profile: ';
+  userAddress.src = githubURL;
+  userFollowers.textContent = followers;
+  userFollowing.textContent = following;
+  userBio.textContent = bio;
+
+  // adding classes
+  newCard.classList.add('card');
+  userInfo.classList.add('card-info');
+  userRealName.classList.add('name');
+  userHubName.classList.add('username');
+ 
+  //appending
+  newCard.appendChild(newImage);
+  newCard.appendChild(userInfo);
+  userInfo.appendChild(userRealName);
+  userInfo.appendChild(userLocation);
+  userInfo.appendChild(userProfile);
+  userProfile.appendChild(userAddress);
+  userInfo.appendChild(userFollowers);
+  userInfo.appendChild(userFollowing);
+  userInfo.appendChild(userBio);
+}
+
+
+
+
 
 /* List of LS Instructors Github username's: 
   tetondan
